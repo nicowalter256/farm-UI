@@ -1,13 +1,7 @@
-import 'dart:ui';
-
 import 'package:farm_ui/constants/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../widgets/farm_card_widget.dart';
+import 'farm_owner/farm_owner.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,9 +14,53 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Constants.primary,
+        unselectedItemColor: Colors.white,
+        items: [
+          const BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          const BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.person),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: Container(
+              height: 60,
+              width: 60,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 5,
+                  color: Constants.primary,
+                ),
+              ),
+              child: const Icon(
+                Icons.add,
+                color: Constants.primary,
+              ),
+            ),
+          ),
+          const BottomNavigationBarItem(
+            label: 'Market',
+            icon: Icon(Icons.production_quantity_limits_sharp),
+          ),
+          const BottomNavigationBarItem(
+            label: 'More',
+            icon: Icon(Icons.more_vert),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
@@ -36,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 40,
                         decoration: const BoxDecoration(
                             color: Constants.grey, shape: BoxShape.circle),
-                        child: const Icon(Icons.notifications),
+                        child: const Icon(Icons.shopping_bag_sharp),
                       ),
                       const SizedBox(
                         width: 10,
@@ -46,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 40,
                         decoration: const BoxDecoration(
                             color: Constants.grey, shape: BoxShape.circle),
-                        child: const Icon(Icons.shopping_bag),
+                        child: const Icon(Icons.notifications),
                       ),
                     ],
                   )
@@ -101,135 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          Column(
-                            children: [
-                              const SizedBox(height: 30),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: SizedBox(
-                                  height: 250,
-                                  width: double.infinity,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 100,
-                                        decoration: const BoxDecoration(
-                                          color: Constants.brownBG,
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(10),
-                                            topRight: Radius.circular(10),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "Juniper Diary farm",
-                                                  style: GoogleFonts.mulish(
-                                                    textStyle: const TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 8),
-                                                Text(
-                                                  "Kasese. 230 Acres. 12 employees",
-                                                  style: GoogleFonts.mulish(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 13,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                const Icon(
-                                                  Icons.add_circle,
-                                                  color: Constants.grey,
-                                                  size: 40,
-                                                ),
-                                                Text(
-                                                  "Add Farm",
-                                                  style: GoogleFonts.mulish(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 13,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 150,
-                                        decoration: const BoxDecoration(
-                                          color: Constants.brownSolidBG,
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10),
-                                            bottomRight: Radius.circular(10),
-                                          ),
-                                        ),
-                                        child: const Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            FarmCardWidget(
-                                              name: "Labour",
-                                              image: "assets/icons/labour.svg",
-                                            ),
-                                            FarmCardWidget(
-                                              name: "Extension services",
-                                              image: "assets/icons/labour.svg",
-                                            ),
-                                            FarmCardWidget(
-                                              name: "Finances",
-                                              image: "assets/icons/labour.svg",
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "Feasts services",
-                                        style: GoogleFonts.mulish(
-                                          textStyle: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  const Icon(Icons.arrow_circle_down_outlined),
-                                ],
-                              ),
-                            ],
-                          ),
+                          const FarmOwnerWidget(),
                           Container(),
                           Container(),
                           Container(),
