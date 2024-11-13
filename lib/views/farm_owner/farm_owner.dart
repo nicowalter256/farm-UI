@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../constants/constants.dart';
 import '../../widgets/farm_card_widget.dart';
+import '../finance/finance.dart';
 
 class FarmOwnerWidget extends StatelessWidget {
   const FarmOwnerWidget({super.key});
@@ -83,21 +86,26 @@ class FarmOwnerWidget extends StatelessWidget {
                         bottomRight: Radius.circular(10),
                       ),
                     ),
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        FarmCardWidget(
+                        const FarmCardWidget(
                           name: "Labour",
-                          image: "assets/icons/labour.svg",
+                          image: "assets/icons/Labour-icon.png",
                         ),
-                        FarmCardWidget(
+                        const FarmCardWidget(
                           name: "Extension services",
-                          image: "assets/icons/labour.svg",
+                          image: "assets/icons/Livestock.png",
                         ),
-                        FarmCardWidget(
-                          name: "Finances",
-                          image: "assets/icons/labour.svg",
+                        GestureDetector(
+                          onTap: () => {
+                            // Get.to(const FinanceWidget()),
+                          },
+                          child: const FarmCardWidget(
+                            name: "Finances",
+                            image: "assets/icons/Finances-icon.png",
+                          ),
                         )
                       ],
                     ),

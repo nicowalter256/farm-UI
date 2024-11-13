@@ -16,11 +16,9 @@ class FarmCardWidget extends StatelessWidget {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: SvgPicture.asset(
+          child: Image.asset(
             image,
-            height: 60,
-            placeholderBuilder: (context) => const CircularProgressIndicator(),
-            color: Constants.brownishBG,
+            height: 100,
           ),
         ),
         const SizedBox(height: 5),

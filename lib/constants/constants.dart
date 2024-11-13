@@ -8,4 +8,5 @@ class Constants {
   static const Color brownishBG = Color(0xFFe2ac71);
   static const Color secondary = Color(0xFFf5e5a8);
   static const Color deepBrownBG = Color(0xFF8d5835);
+  static const Color blackBG = Colors.black;
 }
